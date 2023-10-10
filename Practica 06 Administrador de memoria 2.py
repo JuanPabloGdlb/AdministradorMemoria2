@@ -73,6 +73,12 @@ def agregar_archivos_desde_directorio(directorio):
     except FileNotFoundError:
         print(f"El directorio '{directorio}' no se encuentra.")
 
+# Función para agregar procesos virtuales al archivo "archivos.txt"
+def agregar_procesos_virtuales(nombre_proceso, tamaño):
+    with open("archivos.txt", "a") as archivo_salida:
+        archivo_salida.write(f"{nombre_proceso}, {tamaño}kb\n")
+    print(f"Proceso virtual '{nombre_proceso}' agregado con éxito a archivos.txt.")
+
 # Función principal del programa
 def main():
     num_blocks = int(input("Ingrese el número de bloques de memoria: "))  # Solicita al usuario el número de bloques de memoria
@@ -165,7 +171,8 @@ def main():
                     for _ in range(num_processes):
                         process_name = input("Ingrese el nombre del proceso: ")
                         size = int(input("Ingrese el peso del proceso en KB: "))
-                        # Agregar lógica para asignar procesos virtuales
+                        agregar_procesos_virtuales(process_name, size)  # Llama a la función para agregar procesos virtuales al archivo "archivos.txt"
+
                 else:
                     print("Opción no válida. Por favor, ingrese un número válido.")
         else:
@@ -173,3 +180,4 @@ def main():
 
 if __name__ == "__main__":
     main()  # Llama a la función principal cuando se ejecuta el script
+
